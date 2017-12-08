@@ -1,6 +1,6 @@
 {
     "home": {
-        "title": "欢迎, Java Hipster!",
+        "title": "欢迎进入, 华晨阳监控管理中心网关!",
         "subtitle": "这里是首页",
         "logged": {
             "message": "您目前是以 \"{{username}}\" 账号登录."

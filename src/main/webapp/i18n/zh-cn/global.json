@@ -1,6 +1,6 @@
 {
     "global": {
-        "title": "Jhipstergateway",
+        "title": "华晨阳监控中心网关",
         "browsehappy": "您目前使用<strong>过于老旧</strong>的浏览器, 建议您<a href=\"http://browsehappy.com/?locale=en\">升级浏览器</a>让您有更佳的上网体验.",
         "menu": {
             "home": "首页",
@@ -83,7 +83,7 @@
             "id" : "ID"
         },
         "ribbon": {
-            "dev":"Development"
+            "dev":"Hcycom"
         },
         "item-count": "显示第 {{first}} - {{second}} 条，共 {{total}} 条"
     },
