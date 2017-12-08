@@ -5,28 +5,18 @@
     <dl class="row-md jh-entity-details">
         <dt><span jhiTranslate="userManagement.login">Login</span></dt>
         <dd>
-            <span>{{user.login}}</span>
-            <span class="badge badge-danger" *ngIf="!user.activated"
+            <span>{{user.username}}</span>
+            <span class="badge badge-danger" *ngIf="!user.status"
                   jhiTranslate="userManagement.deactivated">Deactivated</span>
-            <span class="badge badge-success" *ngIf="user.activated"
+            <span class="badge badge-success" *ngIf="user.status"
                   jhiTranslate="userManagement.activated">Activated</span>
         </dd>
-        <dt><span jhiTranslate="userManagement.firstName">First Name</span></dt>
-        <dd>{{user.firstName}}</dd>
-        <dt><span jhiTranslate="userManagement.lastName">Last Name</span></dt>
-        <dd>{{user.lastName}}</dd>
+        <dt><span jhiTranslate="userManagement.sex">sex</span></dt>
+        <dd>{{user.sex}}</dd>
+        <dt><span jhiTranslate="userManagement.phone">phone</span></dt>
+        <dd>{{user.phone}}</dd>
         <dt><span jhiTranslate="userManagement.email">Email</span></dt>
         <dd>{{user.email}}</dd>
-        <dt><span jhiTranslate="userManagement.langKey">Lang Key</span></dt>
-        <dd>{{user.langKey}}</dd>
-        <dt><span jhiTranslate="userManagement.createdBy">Created By</span></dt>
-        <dd>{{user.createdBy}}</dd>
-        <dt><span jhiTranslate="userManagement.createdDate">Created Date</span></dt>
-        <dd>{{user.createdDate | date:'dd/MM/yy HH:mm' }}</dd>
-        <dt><span jhiTranslate="userManagement.lastModifiedBy">Last Modified By</span></dt>
-        <dd>{{user.lastModifiedBy}}</dd>
-        <dt><span jhiTranslate="userManagement.lastModifiedDate">Last Modified Date</span></dt>
-        <dd>{{user.lastModifiedDate | date:'dd/MM/yy HH:mm'}}</dd>
         <dt><span jhiTranslate="userManagement.profiles">Profiles</span></dt>
         <dd>
             <ul class="list-unstyled">

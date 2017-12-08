@@ -18,6 +18,12 @@ export class UserService {
     }
 
     update(user: User): Observable<ResponseWrapper> {
+        if(user.status){
+            user.status=1;
+        }else {
+            user.status=0;
+        }
+
         return this.http.put(this.resourceUrl, user)
             .map((res: Response) => this.convertResponse(res));
     }

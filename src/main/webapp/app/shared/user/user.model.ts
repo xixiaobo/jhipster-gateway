@@ -1,45 +1,34 @@
 export class User {
-    public id?: any;
+    public id?: string;
     public login?: string;
-    public firstName?: string;
-    public lastName?: string;
+    public username?: string;
+    public sex?: string;
     public email?: string;
-    public activated?: Boolean;
-    public langKey?: string;
+    public status?: number;
+    public phone?: string;
     public authorities?: any[];
-    public createdBy?: string;
-    public createdDate?: Date;
-    public lastModifiedBy?: string;
-    public lastModifiedDate?: Date;
     public password?: string;
 
     constructor(
         id?: any,
         login?: string,
-        firstName?: string,
-        lastName?: string,
+        username?: string,
+        sex?: string,
         email?: string,
-        activated?: Boolean,
-        langKey?: string,
+        status?: number,
+        phone?: string,
         authorities?: any[],
-        createdBy?: string,
-        createdDate?: Date,
-        lastModifiedBy?: string,
-        lastModifiedDate?: Date,
+        is?: boolean,
         password?: string
     ) {
         this.id = id ? id : null;
         this.login = login ? login : null;
-        this.firstName = firstName ? firstName : null;
-        this.lastName = lastName ? lastName : null;
+        this.username = username ? username : null;
+        this.sex = sex ? sex : null;
         this.email = email ? email : null;
-        this.activated = activated ? activated : false;
-        this.langKey = langKey ? langKey : null;
+        this.status = status ? status : 0;
+        this.phone = phone ? phone : null;
         this.authorities = authorities ? authorities : null;
-        this.createdBy = createdBy ? createdBy : null;
-        this.createdDate = createdDate ? createdDate : null;
-        this.lastModifiedBy = lastModifiedBy ? lastModifiedBy : null;
-        this.lastModifiedDate = lastModifiedDate ? lastModifiedDate : null;
         this.password = password ? password : null;
     }
 }

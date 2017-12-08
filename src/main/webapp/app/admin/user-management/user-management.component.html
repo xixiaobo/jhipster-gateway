@@ -14,34 +14,30 @@
                 <th jhiSortBy="login"><span jhiTranslate="userManagement.login">Login</span> <span class="fa fa-sort"></span></th>
                 <th jhiSortBy="email"><span jhiTranslate="userManagement.email">Email</span> <span class="fa fa-sort"></span></th>
                 <th></th>
-                <th jhiSortBy="langKey"> <span jhiTranslate="userManagement.langKey">Lang Key</span> <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="langKey"> <span jhiTranslate="userManagement.sex">sex</span> <span class="fa fa-sort"></span></th>
                 <th><span jhiTranslate="userManagement.profiles">Profiles</span></th>
-                <th jhiSortBy="createdDate"><span jhiTranslate="userManagement.createdDate">Created Date</span> <span class="fa fa-sort"></span></th>
-                <th jhiSortBy="lastModifiedBy"><span jhiTranslate="userManagement.lastModifiedBy">Last Modified By</span> <span class="fa fa-sort"></span></th>
-                <th jhiSortBy="lastModifiedDate"><span jhiTranslate="userManagement.lastModifiedDate">Last Modified Date</span> <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="lastModifiedBy"><span jhiTranslate="userManagement.phone">phone</span> <span class="fa fa-sort"></span></th>
                 <th></th>
             </tr>
             </thead>
             <tbody *ngIf ="users">
             <tr *ngFor="let user of users; trackBy: trackIdentity">
                 <td><a [routerLink]="['../user-management', user.login]">{{user.id}}</a></td>
-                <td>{{user.login}}</td>
+                <td>{{user.username}}</td>
                 <td>{{user.email}}</td>
                 <td>
-                    <button class="btn btn-danger btn-sm" (click)="setActive(user, true)" *ngIf="!user.activated"
+                    <button class="btn btn-danger btn-sm" (click)="setActive(user, 1)" *ngIf="!user.status"
                             jhiTranslate="userManagement.deactivated">Deactivated</button>
-                    <button class="btn btn-success btn-sm" (click)="setActive(user, false)" *ngIf="user.activated"
-                            [disabled]="currentAccount.login === user.login" jhiTranslate="userManagement.activated">Activated</button>
+                    <button class="btn btn-success btn-sm" (click)="setActive(user, 0)" *ngIf="user.status"
+                            [disabled]="currentAccount.username === user.username" jhiTranslate="userManagement.activated">Activated</button>
                 </td>
-                <td>{{user.langKey}}</td>
+                <td>{{user.sex}}</td>
                 <td>
                     <div *ngFor="let authority of user.authorities">
                         <span class="badge badge-info">{{ authority }}</span>
                     </div>
                 </td>
-                <td>{{user.createdDate | date:'dd/MM/yy HH:mm'}}</td>
-                <td>{{user.lastModifiedBy}}</td>
-                <td>{{user.lastModifiedDate | date:'dd/MM/yy HH:mm'}}</td>
+                <td>{{user.phone}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

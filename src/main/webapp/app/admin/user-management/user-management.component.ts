@@ -59,7 +59,7 @@ export class UserMgmtComponent implements OnInit, OnDestroy {
     }
 
     setActive(user, isActivated) {
-        user.activated = isActivated;
+        user.status = isActivated;
 
         this.userService.update(user).subscribe(
             (response) => {
