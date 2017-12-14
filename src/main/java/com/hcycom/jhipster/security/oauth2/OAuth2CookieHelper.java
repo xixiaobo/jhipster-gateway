@@ -106,7 +106,7 @@ public class OAuth2CookieHelper {
      */
     public void createCookies(HttpServletRequest request, OAuth2AccessToken accessToken, boolean rememberMe,
                               OAuth2Cookies result) {
-        String domain = getCookieDomain(request);
+        String domain = null;
         log.debug("creating cookies for domain {}", domain);
         Cookie accessTokenCookie = new Cookie(ACCESS_TOKEN_COOKIE, accessToken.getValue());
         setCookieProperties(accessTokenCookie, request.isSecure(), domain);
@@ -252,7 +252,7 @@ public class OAuth2CookieHelper {
      * @param httpServletResponse the response used to clear them.
      */
     public void clearCookies(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
-        String domain = getCookieDomain(httpServletRequest);
+        String domain = null;
         for (String cookieName : COOKIE_NAMES) {
             clearCookie(httpServletRequest, httpServletResponse, domain, cookieName);
         }

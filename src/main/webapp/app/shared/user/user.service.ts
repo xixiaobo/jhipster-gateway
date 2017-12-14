@@ -9,7 +9,7 @@ import { createRequestOption } from '../model/request-util';
 @Injectable()
 export class UserService {
     private resourceUrl = 'jhipsteruaa/api/users';
-
+    private a=0;
     constructor(private http: Http) { }
 
     create(user: User): Observable<ResponseWrapper> {
@@ -18,12 +18,7 @@ export class UserService {
     }
 
     update(user: User): Observable<ResponseWrapper> {
-        if(user.status){
-            user.status=1;
-        }else {
-            user.status=0;
-        }
-
+        user.status=user.status?1:0;;
         return this.http.put(this.resourceUrl, user)
             .map((res: Response) => this.convertResponse(res));
     }
