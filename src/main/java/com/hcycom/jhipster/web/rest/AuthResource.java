@@ -1,17 +1,15 @@
 package com.hcycom.jhipster.web.rest;
 
-import com.codahale.metrics.annotation.Timed;
-import com.hcycom.jhipster.domain.User;
-import com.hcycom.jhipster.security.oauth2.OAuth2AuthenticationService;
-import com.hcycom.jhipster.service.UserSrevice;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -24,11 +22,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import com.codahale.metrics.annotation.Timed;
+import com.hcycom.jhipster.domain.Attribute_values;
+import com.hcycom.jhipster.security.oauth2.OAuth2AuthenticationService;
+import com.hcycom.jhipster.service.mapper.Attribute_valuesMapper;
 
-import java.util.HashMap;
-import java.util.Map;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 /**
  * Authentication endpoint for web client.
@@ -43,9 +43,10 @@ public class AuthResource {
 
     private final Logger log = LoggerFactory.getLogger(AuthResource.class);
     
-    @Autowired
-    private UserSrevice userSrevice;
 
+    @Autowired
+    private Attribute_valuesMapper attribute_valuesMapper;
+    
     private OAuth2AuthenticationService authenticationService;
     private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
@@ -69,14 +70,20 @@ public class AuthResource {
         Map<String, String> params) {
     	String username = params.get("username");
 		String password = params.get("password");
-		User user=userSrevice.findeUserByName(username);
-		if(user==null){
+		List<Attribute_values> list = attribute_valuesMapper.findUserByName("user", username);
+		if(list==null||list.size()==0){
 			Map<String, Object> map=new HashMap<String, Object>();
 			map.put("msg", "用户不存在");
 			map.put("error_code", 1);
 	    	return new ResponseEntity(map,HttpStatus.OK);
 		}else{
-			if(passwordEncoder.matches(password, user.getPassword())){
+			String DBpassword=null;
+			for (Attribute_values attribute_values : list) {
+				if (attribute_values.getAttribute_key().equals("password")) {
+					DBpassword=attribute_values.getValue();
+				}
+			}
+			if(passwordEncoder.matches(password, DBpassword)){
 				return authenticationService.authenticate(request, response, params);
 			}else{
 				Map<String, Object> map=new HashMap<String, Object>();
