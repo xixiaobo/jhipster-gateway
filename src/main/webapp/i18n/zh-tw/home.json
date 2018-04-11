@@ -1,19 +1,10 @@
 {
     "home": {
-        "title": "Java 文青，歡迎!",
+        "title": "歡迎進入, VLL鏈路管理中心網關!",
         "subtitle": "這裡是您的首頁",
         "logged": {
             "message": "您目前是用 “{{username}}” 帳號登入。"
         },
-        "question": "要是您對 JHipster 有任何疑問，可以到:",
-        "link": {
-            "homepage": "JHipster 首頁",
-            "stackoverflow": "Stack Overflow 上標有 JHipster 的問題",
-            "bugtracker": "JHipster 議題管理",
-            "chat": "JHipster 公開聊天室",
-            "follow": "在 Twitter 上關注 @java_hipster"
-        },
-        "like": "如果您喜歡 JHipster，別忘了給我們一顆星星，馬上連到",
-        "github": "GitHub"
+        "question": "此管理中心網關為VLL鏈路管理系統的微服務網關，<br/>用戶可以通過這個網關頁面對整套微服務進行管理，<br/>並且查看各個微服務下的接口API。"
     }
 }
